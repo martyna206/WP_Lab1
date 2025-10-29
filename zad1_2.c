@@ -1,17 +1,33 @@
 #include <stdio.h>
+#include <stdbool.h>
 
-// Zmienna globalna – istnieje przez cały czas działania programu
-int licznik = 0;
 
-void funkcja() {
-    // Zmienna lokalna – tworzona na nowo przy każdym wywołaniu funkcji
-    int licznik_funkcji = 5;
-    printf("W funkcji: licznik_funkcji = %d\n", licznik_funkcji);
+float celcius(float celcius) {
+    return celcius * 1.8 + 32;
+}
+float farenheit(float farenheit){
+    return (farenheit - 32) / 1.8;
 }
 
 int main() {
-    printf("W main (globalna): licznik = %d\n", licznik);
-    funkcja();
-    printf("Po powrocie do main: licznik = %d\n", licznik);
+    printf("Jaka jest wartosć temperatury? ");
+    float temp;
+    scanf("%f",&temp);
+    printf("Jaki masz myp temperatury? ");
+    char type;
+    scanf(" %c",&type);
+    if(type == 'c' || type == 'C'){
+        temp = celcius(temp);
+    }
+    else if (type == 'f'|| type == 'F'){
+        temp = farenheit(temp);
+    }
+    else{
+        printf("zly typ danych");
+        return 0;
+    }
+
+    printf("Temperatura po konwersji wynosi: %f", temp);
+    printf(" stopni %c",type);
     return 0;
 }
